@@ -1,0 +1,19 @@
+{
+  "name": "pubquiz-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Davey van den Bogaard",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "start:watch": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}

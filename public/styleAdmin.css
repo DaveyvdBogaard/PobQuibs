@@ -1,0 +1,168 @@
+html {
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+input {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+/* Pages */
+
+.pages {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+}
+
+/* Login Page */
+
+.login.page {
+  display: block;
+}
+
+.login.page .form {
+  text-align: center;
+  /* margin: auto; */
+}
+
+.login.page .form .passwordInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 400px;
+}
+
+.login.page .title {
+  font-size: 200%;
+}
+
+.login.page .passwordInput {
+  font-size: 200%;
+  letter-spacing: 3px;
+}
+
+.login.page .loginButton {
+  font-size: 200%;
+  letter-spacing: 3px;
+  border-radius: 20px;
+  margin-top: 10px;
+  width: 300px;
+  background-color: white;
+  border: 2px solid black;
+  transition-duration: 0.4ms;
+}
+
+.login.page .loginButton:hover {
+  background-color: black;
+  color: white;
+}
+
+.login.page .title,
+.login.page .passwordInput {
+  font-weight: 100;
+}
+
+/* answer page */
+
+.answer.page {
+  display: none;
+}
+
+.answer.page .form {
+  text-align: center;
+  /* margin: auto; */
+}
+
+.answer.page .form .answerInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 400px;
+}
+
+.answer.page .title {
+  font-size: 200%;
+}
+
+.answer.page .passwordInput {
+  font-size: 200%;
+  letter-spacing: 3px;
+}
+
+.answer.page .answerButton {
+  font-size: 200%;
+  letter-spacing: 3px;
+  border-radius: 20px;
+  margin-top: 10px;
+  width: 300px;
+  background-color: white;
+  border: 2px solid black;
+  transition-duration: 0.4ms;
+}
+
+.answer.page .answerButton:hover {
+  background-color: black;
+  color: white;
+}
+
+.answer.page .answerButton:disabled {
+  background-color: gray;
+  border: 2px solid gray;
+}
+
+.answer.page .answerButton:disabled:hover {
+  background-color: gray;
+  color: unset;
+}
+
+.answer.page .title,
+.answer.page .answerInput {
+  font-weight: 100;
+}
+
+.answersListBox {
+  text-align: center;
+}
+
+.answersList {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.userBox {
+  border-radius: 20px;
+  border: 2px solid black;
+  width: 250px;
+  height: 250px;
+  margin: 5px;
+  text-align: center;
+}
+

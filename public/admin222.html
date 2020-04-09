@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pob Quibs - Admin</title>
+    <link rel="stylesheet" href="styleAdmin.css" />
+  </head>
+  <body>
+    <ul class="pages">
+      <li class="answer page" id="answerpage">
+        <div>
+          <h1>HOLA</h1>
+          <button onclick="clearAnswers()">Clear answers</button>
+          <h3>Users</h3>
+          <div class="answersList" id="answersList">
+          </div>
+        </div>
+      </li>
+      <li class="login page" id="loginpage">
+        <div class="form">
+          <h3 class="title">Code?</h3>
+          <input class="passwordInput" id="passwordInput" type="text" maxlength="20" />
+          <br/>
+          <button class="loginButton" onclick="login()">Enter</button>
+        </div>
+      </li>
+    </ul>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/admin.js"></script>
+  </body>
+</html>
