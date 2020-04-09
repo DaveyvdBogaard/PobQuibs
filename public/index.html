@@ -1,13 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pob Quibs - Client</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <ul class="pages">
-    <li class="answer page" id="answerpage">
+  <div class="pages">
+    <div class="answer page" id="answerpage">
       <div class="form">
         <h3 class="title">Answer Please?</h3>
         <input class="answerInput" id="answerInput" type="text" />
@@ -20,16 +21,16 @@
 
         </ul>
       </div>
-    </li>
-    <li class="login page" id="loginpage">
+    </div>
+    <div class="login page" id="loginpage">
       <div class="form">
         <h3 class="title">Name please?</h3>
         <input class="usernameInput" id="usernameInput" type="text" maxlength="14" />
         <br/>
         <button class="loginButton" onclick="login()">Join</button>
       </div>
-    </li>
-  </ul>
+    </div>
+  </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="/client.js"></script>
