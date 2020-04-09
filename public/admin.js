@@ -1,3 +1,5 @@
+let users = [];
+
 function login() {
   let input = document.getElementById("passwordInput").value;
   if (input === "") {
@@ -8,24 +10,9 @@ function login() {
   socket.emit("admin_login", { password: input });
 }
 
-function clearAnswers() {
-  socket.emit("clear_answers");
-}
-
-let socket = io();
-
-socket.on("login_successful", (data) => {
-  document.getElementById("loginpage").style.display = "none";
-  document.getElementById("answerpage").style.display = "block";
-});
-
-socket.on("new_answer", (data) => {
-  var userbox = document.getElementById(data.username + ".answer")
-  userbox.childNodes[0].nodeValue = data.answer
-});
-
-socket.on("new_user", (data) => {
+function createUserbox(data) {
   if (document.getElementById(data.username) === null) {
+    users.push(data.username)
     var node = document.createElement("DIV")
     node.className = "userBox"
     node.id = data.username
@@ -37,13 +24,38 @@ socket.on("new_user", (data) => {
     h4AnswerTitle.appendChild(h4AnswerTitleText);
     var h3AnswerTitle = document.createElement("H3");
     h3AnswerTitle.id = data.username + ".answer";
-    var h3AnswerTitleText = document.createTextNode("data.answer");
+    var h3AnswerTitleText = document.createTextNode("...");
     h3AnswerTitle.appendChild(h3AnswerTitleText);
     node.appendChild(h3UsernameTitle)
     node.appendChild(h4AnswerTitle)
     node.appendChild(h3AnswerTitle)
     document.getElementById("answersList").appendChild(node);
   }
+}
+
+function clearAnswers() {
+  users.forEach(element => {
+    var answersbox = document.getElementById(element + ".answer")
+    answersbox.childNodes[0].nodeValue = "..."
+  });
+  socket.emit("clear_answers");
+}
+
+let socket = io();
+
+socket.on("login_successful", (data) => {
+  document.getElementById("loginpage").style.display = "none";
+  document.getElementById("answerpage").style.display = "block";
+});
+
+socket.on("new_answer", (data) => {
+  createUserbox(data)
+  var userbox = document.getElementById(data.username + ".answer")
+  userbox.childNodes[0].nodeValue = data.answer
+});
+
+socket.on("new_user", (data) => {
+  createUserbox(data);
 });
 
 socket.on("disconnect", () => {
