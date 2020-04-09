@@ -14,6 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 var numUsers = 0;
 
 let adminKey = 0;
+let adminSocketId = null;
 
 io.on("connection", (socket) => {
   var addedUser = false;
@@ -22,7 +23,7 @@ io.on("connection", (socket) => {
     console.log("New Answer from: " + data.username + " and the answer is: " + data.answer)
     socket.emit("answer_received", {answer: data.answer});
     // TODO Emit to admin only
-    socket.broadcast.emit("new_answer", {username: data.username, answer: data.answer})
+    socket.to(`${adminSocketId}`).emit("new_answer", {username: data.username, answer: data.answer})
   });
 
   socket.on("join", (data) => {
@@ -32,7 +33,7 @@ io.on("connection", (socket) => {
     addedUser = true;
     console.log('New User ' + data.username)
     // TODO Emit to admin only
-    socket.broadcast.emit("new_user", {username: socket.username})
+    socket.to(`${adminSocketId}`).emit("new_user", {username: socket.username})
     socket.emit("joined", {
       numUsers: numUsers,
       username: socket.username
@@ -43,6 +44,7 @@ io.on("connection", (socket) => {
     if(data.password === "1") {
       console.log("admin logged in")
       adminKey = Math.floor(Math.random() * 100);
+      adminSocketId = socket.id
       socket.emit("login_successful", {key: adminKey});
     } else {
       return;
