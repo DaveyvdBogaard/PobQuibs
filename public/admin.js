@@ -16,19 +16,35 @@ function createUserbox(data) {
     var node = document.createElement("DIV")
     node.className = "userBox"
     node.id = data.username
+
+    //Username
     var h3UsernameTitle = document.createElement("H2");
     var h3UsernameTitleText = document.createTextNode(data.username);
     h3UsernameTitle.appendChild(h3UsernameTitleText);
+    //Answer header
     var h4AnswerTitle = document.createElement("H4");
     var h4AnswerTitleText = document.createTextNode("Answer:");
     h4AnswerTitle.appendChild(h4AnswerTitleText);
+    //Answer
     var h3AnswerTitle = document.createElement("H3");
     h3AnswerTitle.id = data.username + ".answer";
     var h3AnswerTitleText = document.createTextNode("...");
     h3AnswerTitle.appendChild(h3AnswerTitleText);
+    //Previous Answer header
+    var previousAnswerTitle = document.createElement("H4");
+    var previousAnswerTitleText = document.createTextNode("Previous answer:");
+    previousAnswerTitle.appendChild(previousAnswerTitleText);
+    //Previous Answer
+    var previousAnswer = document.createElement("H4");
+    previousAnswer.id = data.username + ".previousAnswer";
+    var previousAnswerText = document.createTextNode("");
+    previousAnswer.appendChild(previousAnswerText);
+
     node.appendChild(h3UsernameTitle)
     node.appendChild(h4AnswerTitle)
     node.appendChild(h3AnswerTitle)
+    node.appendChild(previousAnswerTitle)
+    node.appendChild(previousAnswer)
     document.getElementById("answersList").appendChild(node);
   }
 }
@@ -36,7 +52,12 @@ function createUserbox(data) {
 function clearAnswers() {
   users.forEach(element => {
     var answersbox = document.getElementById(element + ".answer")
+    var oldAnswer = answersbox.childNodes[0].nodeValue
     answersbox.childNodes[0].nodeValue = "..."
+    if (oldAnswer !== "...") {
+      var oldAnswerBox = document.getElementById(element + ".previousAnswer")
+      oldAnswerBox.childNodes[0].nodeValue = oldAnswer
+    }
   });
   socket.emit("clear_answers");
 }
@@ -50,8 +71,8 @@ socket.on("login_successful", (data) => {
 
 socket.on("new_answer", (data) => {
   createUserbox(data)
-  var userbox = document.getElementById(data.username + ".answer")
-  userbox.childNodes[0].nodeValue = data.answer
+  var newAnswerbox = document.getElementById(data.username + ".answer")
+  newAnswerbox.childNodes[0].nodeValue = data.answer
 });
 
 socket.on("new_user", (data) => {
