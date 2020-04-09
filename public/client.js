@@ -5,7 +5,7 @@ let loginButton = document.querySelector(".loginButton");
 let loginPage = document.getElementsByClassName("login page"); // The console.login page
 let answerPage = document.getElementsByClassName("answer page"); // The answerroom page
 
-let username;
+let username3;
 let answer;
 let connected = false;
 let typing = false;
@@ -18,7 +18,7 @@ function login() {
     alert("Choose a name longer than 0 characters")
     return;
   }
-  username = input;
+  username3 = input;
   socket.emit("join", {username: input})
 }
 
@@ -30,6 +30,13 @@ function sendAnswer() {
   }
   answer = input;
   socket.emit("send_answer", {answer: input, username: username})
+}
+
+function exit() {
+  localStorage.clear()
+  socket.emit('user_leave', {username: username})
+  document.getElementById("loginpage").style.display = "block";
+  document.getElementById("answerpage").style.display = "none";
 }
 
 let socket = io();

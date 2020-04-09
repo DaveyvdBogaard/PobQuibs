@@ -58,6 +58,12 @@ socket.on("new_user", (data) => {
   createUserbox(data);
 });
 
+socket.on("user_left", (data) => {
+  document.getElementById(data.username).remove();
+  var filteredAry = users.filter(function(e) { return e !== data.username })
+  users = filteredAry;
+})
+
 socket.on("disconnect", () => {
   console.log("you have been disconnected");
 });

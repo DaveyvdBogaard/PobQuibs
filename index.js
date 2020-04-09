@@ -12,7 +12,6 @@ server.listen(port, () => {
 app.use(express.static(path.join(__dirname, "public")));
 
 var numUsers = 0;
-let users = [];
 
 let adminKey = 0;
 
@@ -60,4 +59,10 @@ io.on("connection", (socket) => {
       --numUsers;
     }
   });
+
+  socket.on("user_leave", (data) => {
+    console.log(data.username + " left")
+    addedUser = false;
+    socket.broadcast.emit("user_left", {username: data.username})
+  })
 });

@@ -9,18 +9,6 @@ input {
     Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style: none;
-  word-wrap: break-word;
-}
-
 /* Pages */
 
 .pages {
@@ -53,7 +41,7 @@ ul {
   outline: none;
   padding-bottom: 15px;
   text-align: center;
-  width: 400px;
+  width: 100%;
 }
 
 .login.page .title {
@@ -104,7 +92,7 @@ ul {
   outline: none;
   padding-bottom: 15px;
   text-align: center;
-  width: 400px;
+  width: 100%;
 }
 
 .answer.page .title {
@@ -154,4 +142,19 @@ ul {
 .answerList {
   list-style: none;
   text-align: center;
+}
+
+.exitButton {
+  position: absolute;
+  bottom: 10px;
+  font-size: 100%;
+  letter-spacing: 3px;
+  border-radius: 20px;
+  width: 300px;
+  background-color: white;
+  border: 2px solid black;
+  transition-duration: 0.4ms;
+  left: 0;
+  right: 0;
+  margin: auto
 }
