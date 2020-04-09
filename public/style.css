@@ -9,13 +9,16 @@ input {
     Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+body {
+  margin: 0;
+}
+
 /* Pages */
 
 .pages {
   height: 100%;
-  margin: 0;
+  margin: 10px;
   padding: 0;
-  width: 100%;
 }
 
 .page {
@@ -99,8 +102,8 @@ input {
   font-size: 200%;
 }
 
-.answer.page .usernameInput {
-  font-size: 200%;
+.answer.page .answerInput {
+  font-size: 150%;
   letter-spacing: 3px;
 }
 
